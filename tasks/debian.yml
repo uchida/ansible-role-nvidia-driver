@@ -33,3 +33,10 @@
     install_recommends: no
     update_cache: yes
   when: nvidia_driver_repo in ["ubuntu", "ppa"]
+
+- name: disable nonveau, opensource version of NVIDIA graphics driver
+  lineinfile:
+    dest: /etc/default/grub
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT nouveau.modeset=0"'
+    validate: 'sh -n %s'
+    create: yes
