@@ -1,0 +1,15 @@
+---
+- hosts: test
+  connection: docker
+  remote_user: root
+  roles:
+    - role: ansible-role-nvidia-driver
+      nvidia_driver_repo: nvidia
+
+    - role: ansible-role-nvidia-driver
+      nvidia_driver_repo: ppa
+      nvidia_driver_version: 390
+
+    - role: ansible-role-nvidia-driver
+      nvidia_driver_repo: ubuntu
+      nvidia_driver_version: 384
