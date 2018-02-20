@@ -10,4 +10,5 @@ galaxy_info:
   galaxy_tags:
     - nvidia
 dependencies:
-  - uchida.nvidia-repo
+  - role: uchida.nvidia-repo
+    when: nvidia_driver_repo == "nvidia"

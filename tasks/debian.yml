@@ -1,10 +1,5 @@
 ---
 
-- name: import uchida.nvidia-repo role if required
-  import_role:
-    name: uchida.nvidia-repo
-  when: nvidia_driver_repo == "nvidia"
-
 - name: NVIDIA graphics driver is installed from NVIDIA APT repository
   apt:
     name: cuda-drivers
