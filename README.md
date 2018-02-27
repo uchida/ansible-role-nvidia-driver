@@ -11,11 +11,11 @@ nvidia_driver_repo: nvidia
 nvidia_driver_version: 384
 ```
 
-- `nvidia_driver_repo` is a variable to specify which APT repository is used,
+- `nvidia_driver_repo` is a variable to specify which APT repository is added,
    choice of `['nvidia', 'ppa', 'ubuntu']` and default is `nvidia`
-   - `nvidia` install from [NVIDIA CUDA repository](http://developer.download.nvidia.com/compute/cuda/repos/)
-   - `ppa` installl from [Ubuntu PPA repository](https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa)
-   - `ubuntu` install from Ubuntu official APT repository
+   - `nvidia`: register [NVIDIA CUDA repository](http://developer.download.nvidia.com/compute/cuda/repos/) and install `cuda-drivers`
+   - `ppa`: register [Ubuntu PPA repository](https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa)
+   - `ubuntu`: Ubuntu official APT repository, nothing to register
 - `nvidia_driver_version` is a variable to specify NVIDIA graphics driver version and
    used only if `nvidia_driver_repo` in `['ppa', 'ubuntu']`.
    current default is `384`
@@ -28,7 +28,7 @@ Dependencies
 Example Playbook
 ----------------
 
-install latest graphics driver from NVIDIA CUDA repository
+register NVIDIA CUDA repository and install cuda-drivers
 
 ```
 - hosts: servers
@@ -37,7 +37,7 @@ install latest graphics driver from NVIDIA CUDA repository
       nvidia_driver_repo: nvidia
 ```
 
-install graphics driver version 390 from ppa repository
+register ppa repository and install graphics driver version 390
 
 ```
 - hosts: servers
@@ -47,14 +47,25 @@ install graphics driver version 390 from ppa repository
       nvidia_driver_version: 390
 ```
 
-install graphics driver version 384 from ubuntu repository
+install graphics driver version 384.111
 
 ```
 - hosts: servers
   roles:
     - role: uchida.nvidia-driver
       nvidia_driver_repo: ubuntu
-      nvidia_driver_version: 384
+      nvidia_driver_version: "384.111"
+```
+
+install graphics driver version 384.81 from ubuntu or nvidia
+
+```
+- hosts: servers
+  roles:
+    - role: uchida.nvidia-repo
+    - role: uchida.nvidia-driver
+      nvidia_driver_repo: ubuntu
+      nvidia_driver_version: "384.81"
 ```
 
 License

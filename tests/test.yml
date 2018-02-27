@@ -12,4 +12,8 @@
 
     - role: ansible-role-nvidia-driver
       nvidia_driver_repo: ubuntu
+      nvidia_driver_version: "384.111"
+
+    - role: ansible-role-nvidia-driver
+      nvidia_driver_repo: ubuntu
       nvidia_driver_version: 384
