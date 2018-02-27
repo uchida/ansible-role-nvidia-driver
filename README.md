@@ -1,4 +1,4 @@
-uchida.nvidia-docker
+uchida.nvidia-driver
 ====================
 
 [![Ansible Role](https://img.shields.io/ansible/role/23943.svg?maxAge=2592000)](https://galaxy.ansible.com/uchida/nvidia-driver/)
