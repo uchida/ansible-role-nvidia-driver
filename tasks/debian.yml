@@ -7,7 +7,7 @@
     autoremove: yes
     install_recommends: no
     update_cache: yes
-  when: nvidia_driver_package_name != "cuda-drivers"
+  when: not ansible_check_mode and nvidia_driver_package_name != "cuda-drivers"
 
 - name: graphics-driver ppa APT repository is registered
   apt_repository:
@@ -24,6 +24,7 @@
     state: present
     install_recommends: no
     update_cache: yes
+  when: not ansible_check_mode
 
 - name: disable nonveau, opensource version of NVIDIA graphics driver
   lineinfile:
