@@ -7,6 +7,10 @@
       nvidia_driver_repo: nvidia
 
     - role: ansible-role-nvidia-driver
+      nvidia_driver_repo: nvidia
+      nvidia_driver_version: 396.37
+
+    - role: ansible-role-nvidia-driver
       nvidia_driver_repo: ppa
       nvidia_driver_version: 390
 

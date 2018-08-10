@@ -21,9 +21,7 @@ nvidia_driver_version: 384
    - `nvidia`: register [NVIDIA CUDA repository](http://developer.download.nvidia.com/compute/cuda/repos/) and install `cuda-drivers`
    - `ppa`: register [Ubuntu PPA repository](https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa)
    - `ubuntu`: Ubuntu official APT repository, nothing to register
-- `nvidia_driver_version` is a variable to specify NVIDIA graphics driver version and
-   used only if `nvidia_driver_repo` in `['ppa', 'ubuntu']`.
-   current default is `384`
+- `nvidia_driver_version` is a variable to specify NVIDIA graphics driver version and current default is `384`
 
 Dependencies
 ------------
