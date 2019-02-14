@@ -11,5 +11,5 @@ galaxy_info:
     - nvidia
 dependencies:
   - role: uchida.nvidia-repo
-    version: 0.1.2
+    version: 0.1.3
     when: nvidia_driver_repo == "nvidia"
