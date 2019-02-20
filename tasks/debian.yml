@@ -29,7 +29,7 @@
 
 - name: NVIDIA graphics driver {{ nvidia_driver_package_name }} is installed
   apt:
-    name: "{{ nvidia_driver_package_name }}={{ nvidia_driver_package_version }}"
+    name: "{{ packages }}"
     state: present
     install_recommends: no
     update_cache: "{{ 'yes' if not ansible_check_mode | bool else 'no' }}"
@@ -38,16 +38,10 @@
     ((nvidia_driver_repo == "ubuntu") or
      (nvidia_driver_repo == "ppa" and not nvidia_driver_ppa_apt_repo.changed|default(true)) or
      (nvidia_driver_repo == "nvidia" and not nvidia_repo_cuda_apt_repo.changed|default(true)))
-
-- name: NVIDIA CUDA runtime library is installed
-  apt:
-    name: "libcuda1-{{ nvidia_driver_version_major }}={{ nvidia_driver_package_version }}"
-    state: present
-    install_recommends: no
-    update_cache: "{{ 'yes' if not ansible_check_mode | bool else 'no' }}"
-  when:
-    nvidia_driver_package_name != "cuda-drivers" and
-    (not ansible_check_mode or not nvidia_repo_cuda_apt_repo.changed|default(true))
+  vars:
+    packages:
+      - "{{ nvidia_driver_package_name }}={{ nvidia_driver_package_version }}"
+      - "libcuda1-{{ nvidia_driver_version_major }}={{ nvidia_driver_package_version }}"
 
 - name: disable nonveau, opensource version of NVIDIA graphics driver
   lineinfile:
