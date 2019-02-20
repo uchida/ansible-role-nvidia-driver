@@ -2,7 +2,7 @@ galaxy_info:
   author: Akihiro Uchida
   description: ansible role to install NVIDIA graphics drivers
   license: CC0
-  min_ansible_version: 2.4
+  min_ansible_version: 2.7
   platforms:
   - name: Ubuntu
     versions:
