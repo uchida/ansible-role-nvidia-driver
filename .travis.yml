@@ -4,8 +4,7 @@ language: python
 env:
   - IMAGE=ubuntu TAG=bionic
 
-dist: xenial
-sudo: required
+dist: bionic
 
 cache: pip
 
