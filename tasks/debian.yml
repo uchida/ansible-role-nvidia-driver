@@ -34,10 +34,11 @@
     install_recommends: no
     update_cache: "{{ 'yes' if not ansible_check_mode | bool else 'no' }}"
   when:
-    not ansible_check_mode and
-    ((nvidia_driver_repo == "ubuntu") or
-     (nvidia_driver_repo == "ppa" and not nvidia_driver_ppa_apt_repo.changed|default(true)) or
-     (nvidia_driver_repo == "nvidia" and not nvidia_repo_cuda_apt_repo.changed|default(true)))
+    not ansible_check_mode or
+    nvidia_driver_repo == "ubuntu" or
+    not nvidia_driver_ppa_apt_repo.changed|default(true) or
+    not nvidia_repo_cuda_apt_repo.changed|default(true)
+
   vars:
     nvidia_driver_packages:
       - "{{ nvidia_driver_package_name }}={{ nvidia_driver_package_version }}"
